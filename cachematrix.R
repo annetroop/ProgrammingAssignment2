@@ -1,12 +1,18 @@
-## Put comments here that give an overall description of what your
-## functions do
-
 ## 
-## makeCacheMatrix is a function that takes a matrix x
-## and stores its inverse when setinverse is supplied
-## the value for the inverse
-## it then makes it available with getinverse
-## (which returns NULL until then)
+## makeCacheMatrix is a function that returns a list object with 4 functions
+## to enable you to store a matrix x
+## and also store (cache) its inverse 
+## once the value for the inverse is supplied via setinverse(inv).
+## It then makes the inverse available with getinverse()
+## (which returns NULL until then).
+##
+## set(x) : store the matrix x, and initialize the inverse to NULL
+##      to indicate not yet known
+## get() returns the matrix x
+## setinverse(inv) stores the supplied value of the inverse
+## getinverse()
+##        returns the inverse if that is already stored, else
+##        returns NULL 
 ##
 
 makeCacheMatrix <- function(x = matrix()) {
@@ -33,7 +39,7 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
-        inv <- x$getinverion
+        inv <- x$getinverse()
         if (!is.null(inv)) {
             message("getting cached inverse")
             return(inv)
